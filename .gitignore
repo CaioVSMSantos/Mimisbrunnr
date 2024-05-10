@@ -1,3 +1,9 @@
+# Configuration Files & Other
+config.ini
+system_instructions/hashin_test.txt
+output.md
+helper.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
