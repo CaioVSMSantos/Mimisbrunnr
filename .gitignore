@@ -3,6 +3,7 @@ config.ini
 system_instructions/hashin_test.txt
 output.md
 helper.txt
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

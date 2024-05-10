@@ -8,7 +8,7 @@ GENERATION_CONFIG = {
   'temperature': 1,
   'top_p': 0.95,
   'top_k': 0,
-  'max_output_tokens': 8192,
+  'max_output_tokens': 16192,
 }
 SAFETY_SETTINGS = [
   {
@@ -78,7 +78,7 @@ def write_output(content, file_extension='.md'):
 
 
 def input_text_generator():
-    prompt = input('Qual é o tema que você está pesquisando?: ')
+    prompt = input('Sobre o que você deseja obter conhecimento?: ')
     result = simple_text_generator(prompt)
     print(result)
     # write_output(result)

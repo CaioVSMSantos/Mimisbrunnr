@@ -4,35 +4,68 @@
 When I drank from wisdom's spring  
 One eye I gave to Mimir the guardian"*
 
-\- Odin - Rebellion
+\- Odin, song by Rebellion
 
-### Configuração
+![image](media/Example_01.jpg)
 
-- Criar venv
-python -m venv .venv
 
-- Ativar venv
+"Mimisbrunnr é um sistema de recomendação de livros curados, inspirado no mito do Poço da Sabedoria de Mimir da mitologia nórdica. Nossa missão é elevar o conhecimento humano, promovendo uma mentalidade crítica, racional e científica. Diga sobre o que você deseja obter conhecimento e receberá recomendações focadas nos tópicos fundamentais para que você possa obter um entendimento de qualidade."
 
-- Instalar Packages
+
+## Configuração
+Utilize um console ou PowerShell para executar os comandos.
+
+### 1.1 - Criar Ambiente Virtual (opcional)
+Para Windows
+```
+python -m venv myenv
+```
+
+Para Linux/Mac
+```
+python3 -m venv myenv
+```
+
+### 1.2 - Ativar o Ambiente Virtual (opcional)
+Para Windows
+```
+.\myenv\Scripts\Activate
+```
+
+Para Linux/Mac
+```
+source myenv/bin/activate
+```
+
+### 2 - Instalar pacotes
+
+```
 pip install -r requirements.txt
+```
 
-- Rodar
+### 3 - Executar script
+
+```
+python mimisbrunnr.py
+```
 
 
-### Projeto v1
+## Desenvolvimento
+### Mimisbrunnr v1
 
-- :heavy_check_mark: **Construção** do Planejamento de Projeto e uma lista de tarefas a serem concluídas
+- :white_check_mark: **Construção** do Planejamento de Projeto e uma lista de tarefas a serem concluídas
     - Extenso refill :coffee: e uma longa playlist :notes:...
-- :heavy_check_mark: **Planejamento e Construção** do MVP, um script que recebe um tema de forma simples e executa um prompt para obter recomendações de livros e publicações
-- :coffee: **Teste** extensívo do script, para reduzir as chances de ele retornar resultados não interessantes
-- **Evolução** do MVP para obter recomendações de outras fontes como documentários, artigos e vídeos, além de fazê-lo de forma mais estruturada
-- **Evolução** do MVP para descartar resultados não significativos, buscar fontes mais curadas e ajuste ético e filosófico
+- :white_check_mark: **Planejamento e Construção** do MVP, um script que recebe um tema de forma simples e executa um prompt para obter recomendações de livros e publicações
+- :white_check_mark: **Teste** extensivo do script, para reduzir as chances de ele retornar resultados não interessantes
+- :white_check_mark: **Evolução** do MVP para obter recomendações de outras fontes como documentários, artigos e vídeos, além de fazê-lo de forma mais estruturada
+- :white_check_mark: **Evolução** do MVP para descartar resultados não significativos, buscar fontes mais curadas e ajuste ético e filosófico
 
-### Projeto v2
+### Mimisbrunnr v2
 
-- **Planejamento e Construção** de uma estrutura Web em Django com uma página simples para fazer a pesquisa
-- **Evolução** da estrutura Web pensando em reusabilidade e UI (o pouco que sei)
+- :coffee: **Planejamento e Construção** de uma estrutura Web em Django com uma página simples para fazer a pesquisa
+- **Evolução** da estrutura Web pensando em reusabilidade e UI (o pouco que sei), utilizando bibliotecas frontend
+- **Refinamento** da apresentação, aplicando uma interface amigável
 
-### Projeto v3
+### Mimisbrunnr v3
 
 Even flow, thoughts arrive like butterflies...
