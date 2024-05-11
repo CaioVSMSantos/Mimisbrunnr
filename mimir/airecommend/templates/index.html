@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mimisbrunnr</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #6c757d;
+        }
+        .search-form {
+            margin-bottom: 20px;
+        }
+        .search-form textarea {
+            width: 100%;
+            max-width: 400px;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .search-form button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .response {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mimisbrunnr</h1>
+        <h2>O Poço da Sabedoria</h2>
+        
+        <form class="search-form" method="post" action="{% url 'get_recommendations' %}">
+            {% csrf_token %}
+            <textarea name="prompt" placeholder="Sobre o que deseja obter conhecimento?"></textarea>
+            <button type="submit">Buscar Conhecimento</button>
+        </form>
+        
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        
+        {% if result %}
+            <div class="response">
+                {{ result | safe }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

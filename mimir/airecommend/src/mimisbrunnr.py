@@ -1,9 +1,13 @@
 import configparser
 import google.generativeai as genai
+import os
+
+from google.generativeai.types.generation_types import GenerateContentResponse
 
 
+ABSOLUTE_FILEPATH = os.path.dirname(__file__)
+CONFIG_FILEPATH = os.path.join(ABSOLUTE_FILEPATH, '../../../config.ini')
 MODEL_NAME = 'gemini-1.5-pro-latest'
-CONFIG_FILEPATH = 'config.ini'
 GENERATION_CONFIG = {
   'temperature': 1,
   'top_p': 0.95,
@@ -28,15 +32,31 @@ SAFETY_SETTINGS = [
     'threshold': 'BLOCK_MEDIUM_AND_ABOVE'
   },
 ]
-SYSTEM_INSTRUCTION_FILEPATH = 'system_instructions/mimisbrunnr.txt'
+SYSTEM_INSTRUCTION_FILEPATH = os.path.join(ABSOLUTE_FILEPATH, 'system_instructions/mimisbrunnr.txt')
 
 
-def run_setup():
+def run_setup() -> None:
     config_parser = configparser.ConfigParser()
     config_parser.read(CONFIG_FILEPATH)
     config = config_parser['config']
-
     genai.configure(api_key=config['GOOGLE_AI_API_KEY'])
+
+
+def read_file(filepath) -> str:
+    try:
+        with open(filepath, 'r') as f:
+            return f.read()
+    except FileNotFoundError:
+        print("File not found Exception!")
+        return ''
+    except Exception as e:
+        print("Unknown Exception: ", e)
+        return ''
+
+
+def write_file(content, file_extension='.md') -> None:
+    with open('output'+file_extension, 'w', encoding='utf-8') as f:
+        f.write(content)
 
 
 def list_models() -> None:
@@ -46,20 +66,10 @@ def list_models() -> None:
             print(m.name)
 
 
-def file_reader(filepath):
-    try:
-        with open(filepath, 'r') as f:
-            return f.read()
-    except FileNotFoundError:
-        print("File not found")
-    except Exception as e:
-        print("Pure Exception:", e)
-
-
 def get_model(model=MODEL_NAME,
               generation_config=GENERATION_CONFIG,
               safety_settings=SAFETY_SETTINGS,
-              system_instruction=file_reader(SYSTEM_INSTRUCTION_FILEPATH)):
+              system_instruction=read_file(SYSTEM_INSTRUCTION_FILEPATH)):
     return genai.GenerativeModel(model_name=model,
                                  generation_config=generation_config,
                                  safety_settings=safety_settings,
@@ -67,22 +77,7 @@ def get_model(model=MODEL_NAME,
 
 
 def simple_text_generator(prompt):
+    run_setup()
     model = get_model()
-    response = model.generate_content(prompt)
+    response: GenerateContentResponse = model.generate_content(prompt)
     return response.text
-
-
-def write_output(content, file_extension='.md'):
-    with open('output'+file_extension, 'w', encoding='utf-8') as f:
-        f.write(content)
-
-
-def input_text_generator():
-    prompt = input('Sobre o que você deseja obter conhecimento?: ')
-    result = simple_text_generator(prompt)
-    print(result)
-    # write_output(result)
-
-
-run_setup()
-input_text_generator()
