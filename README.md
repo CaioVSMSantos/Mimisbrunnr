@@ -96,7 +96,3 @@ O sistema apresenta um campo de texto e um botão de busca. Digite o tema ou con
 - :white_check_mark: **Planejamento e Construção** de uma estrutura Web em Django com uma página simples para fazer a pesquisa
 - :coffee: **Evolução** da estrutura Web pensando em reusabilidade e UI, utilizando bibliotecas frontend como Bootstrap
 - **Refinamento** da apresentação, aplicando uma interface amigável, imagens, etc
-
-### Mimisbrunnr v3
-
-Even flow, thoughts arrive like butterflies...
