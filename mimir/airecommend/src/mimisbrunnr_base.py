@@ -2,7 +2,7 @@ import configparser
 import google.generativeai as genai
 
 
-MODEL_NAME = 'gemini-1.5-pro-latest'
+MODEL_NAME = 'gemini-2.0-flash'
 CONFIG_FILEPATH = 'config.ini'
 GENERATION_CONFIG = {
   'temperature': 1,
